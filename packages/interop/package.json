@@ -52,10 +52,10 @@
   },
   "dependencies": {
     "@helia/block-brokers": "^5.1.4",
-    "@helia/dnslink": "^1.1.4",
     "@helia/car": "^5.3.10",
     "@helia/dag-cbor": "^5.0.7",
     "@helia/dag-json": "^5.0.7",
+    "@helia/dnslink": "^1.1.4",
     "@helia/http": "^3.0.22",
     "@helia/interface": "^6.1.1",
     "@helia/ipns": "^9.1.9",

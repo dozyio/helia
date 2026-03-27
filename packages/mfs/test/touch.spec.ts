@@ -134,6 +134,7 @@ describe('touch', () => {
     await fs.cp(shardedDirCid, shardedDirPath)
 
     await delay(2000)
+
     await fs.touch(shardedDirPath, {
       recursive: true
     })
