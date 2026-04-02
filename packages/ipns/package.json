@@ -84,7 +84,7 @@
     "ipns": "^10.1.2",
     "multiformats": "^13.4.1",
     "progress-events": "^1.0.1",
-    "protons-runtime": "^5.5.0",
+    "protons-runtime": "^6.0.1",
     "uint8arraylist": "^2.4.8",
     "uint8arrays": "^5.1.0"
   },
@@ -94,7 +94,7 @@
     "aegir": "^47.0.22",
     "datastore-core": "^11.0.2",
     "it-drain": "^3.0.10",
-    "protons": "^7.6.1",
+    "protons": "^8.1.1",
     "sinon": "^21.0.0",
     "sinon-ts": "^2.0.0"
   },
