@@ -1,5 +1,77 @@
 # Changelog
 
+## [8.0.0](https://github.com/dozyio/helia/compare/unixfs-v7.2.1...unixfs-v8.0.0) (2026-04-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* metadata is no longer returned from fs.ls - use fs.stat or similar to obtain it
+* uses libp2p v3 and updated block/data stores
+* Fields that would involve DAG traversal have been removed from the output of `fs.stat` - pass the `extended` option to have them returned
+* addFile requires the import candidate to have `path` and `content` properties and the returned CID will always resolve to a directory
+* helia now uses libp2p@2.x.x
+* the `libp2p` property has been removed from the `Helia` interface in `@helia/interface` - it is still present on the return type of `createHelia` from the `helia` module
+* uses multiformats v13 and helia v3
+
+### Features
+
+* add @helia/http to monorepo ([#372](https://github.com/dozyio/helia/issues/372)) ([76220cd](https://github.com/dozyio/helia/commit/76220cd5adf45af7fa61fd0a1321de4722b744d6))
+* emit standardized block broker events ([#995](https://github.com/dozyio/helia/issues/995)) ([397f2d8](https://github.com/dozyio/helia/commit/397f2d86cefd425178a67e70e8f338093d666fe9))
+* expose extended option for ls in mfs and unixfs ([#836](https://github.com/dozyio/helia/issues/836)) ([9f51b17](https://github.com/dozyio/helia/commit/9f51b175c003a8e052231f4b85c1119165b590c6))
+* expose providers option ([#834](https://github.com/dozyio/helia/issues/834)) ([5a911c6](https://github.com/dozyio/helia/commit/5a911c6977ec47d1906ccc69b5f57667f22d9ccf))
+* return cid/name/path from ls ([#929](https://github.com/dozyio/helia/issues/929)) ([b0033ca](https://github.com/dozyio/helia/commit/b0033ca2e1591981d2c9ecb6105911e41e7b786b))
+* support metadata when adding bytes/bytestreams ([#975](https://github.com/dozyio/helia/issues/975)) ([12fd852](https://github.com/dozyio/helia/commit/12fd852240a10f3c0fb0dfed4d40c76436e6348d))
+* update helia to v3 and multiformats to v13 ([#147](https://github.com/dozyio/helia/issues/147)) ([001247c](https://github.com/dozyio/helia/commit/001247c6fc38ff3d810736371de901e5e1099f26))
+* update to libp2p@v3 and latest data/block stores ([#856](https://github.com/dozyio/helia/issues/856)) ([34d3ecd](https://github.com/dozyio/helia/commit/34d3ecd76c8424387c57221000e226f08ccd1d1e))
+
+
+### Bug Fixes
+
+* add doc-check script and export types used by functions ([#637](https://github.com/dozyio/helia/issues/637)) ([4f14996](https://github.com/dozyio/helia/commit/4f14996a9b976f2b60f4c8fe52a4fd1632420749))
+* Add GlobSourceResult to globSource return type in unixfs. ([#475](https://github.com/dozyio/helia/issues/475)) ([9ac5909](https://github.com/dozyio/helia/commit/9ac59098d3e4c8644756a83b185308d7d91626c1))
+* add module-sync ([#1001](https://github.com/dozyio/helia/issues/1001)) ([ef5363e](https://github.com/dozyio/helia/commit/ef5363e834439ba1838a408639cb2d05d3ba6867))
+* add sideEffects: false to package.json ([#485](https://github.com/dozyio/helia/issues/485)) ([8c45267](https://github.com/dozyio/helia/commit/8c45267a474ab10b2faadfebdab33cfe446e8c03))
+* convert date to mtime in glob source ([#106](https://github.com/dozyio/helia/issues/106)) ([cd9e903](https://github.com/dozyio/helia/commit/cd9e903c2ccac61372eaa64a61b4a8f3d79f9d4a))
+* do not hard code HAMT prefix length ([#976](https://github.com/dozyio/helia/issues/976)) ([d033889](https://github.com/dozyio/helia/commit/d033889a7a29029b62230a9a03356660ffbf5c2e))
+* enforce maximum identity hash size ([#865](https://github.com/dozyio/helia/issues/865)) ([d9051cd](https://github.com/dozyio/helia/commit/d9051cdc2fd19ab7def32d195b5798b27d85a078)), closes [#846](https://github.com/dozyio/helia/issues/846)
+* relax unixfs blockstore input type ([#509](https://github.com/dozyio/helia/issues/509)) ([5d62dfb](https://github.com/dozyio/helia/commit/5d62dfb3dd520e6d557b273e446e63b76f57144e))
+* require path in addFile call ([#754](https://github.com/dozyio/helia/issues/754)) ([c0bf36e](https://github.com/dozyio/helia/commit/c0bf36eb45ae0551a1c406e5b806d01425abb1f9))
+* return simple stats or extended stats ([#760](https://github.com/dozyio/helia/issues/760)) ([325b36f](https://github.com/dozyio/helia/commit/325b36f70624d3dcc25b2723f9e3e2d26e1e5199))
+* support profiles and shard split thresholds in mfs ([#972](https://github.com/dozyio/helia/issues/972)) ([9aff8d0](https://github.com/dozyio/helia/commit/9aff8d097a27a71efbdd500ab7b97a89baf57aa6))
+* support reading identity cids ([#429](https://github.com/dozyio/helia/issues/429)) ([98308f7](https://github.com/dozyio/helia/commit/98308f77488b8196b2d18f78f05ecd2d37456834))
+* throw a specific error when offline and a block is missing ([#917](https://github.com/dozyio/helia/issues/917)) ([e27aa2d](https://github.com/dozyio/helia/commit/e27aa2de96fef39950f4c7d00a517208372aaf4e))
+* update project deps and docs ([77e34fc](https://github.com/dozyio/helia/commit/77e34fc115cbfb82585fd954bcf389ecebf655bc))
+* update to libp2p@2.x.x ([#630](https://github.com/dozyio/helia/issues/630)) ([ec8bf66](https://github.com/dozyio/helia/commit/ec8bf66dd870b42d6e5ef2b41706102397e0d39a))
+* use blockstore interface where possible ([#417](https://github.com/dozyio/helia/issues/417)) ([30c8981](https://github.com/dozyio/helia/commit/30c8981934ffba72d572a7b8b2712ec93b7f4d31))
+* use libp2p provider routing field ([#889](https://github.com/dozyio/helia/issues/889)) ([d4d97b8](https://github.com/dozyio/helia/commit/d4d97b83f76be7e3b480052467408839f808e230))
+* use non-deprecated factory function to create delegated client ([#934](https://github.com/dozyio/helia/issues/934)) ([20ba9cf](https://github.com/dozyio/helia/commit/20ba9cf6256961d2b664af0e8f48b5e9d009d834))
+* use unixfs exporter to traverse DAGs ([#455](https://github.com/dozyio/helia/issues/455)) ([6f8c15b](https://github.com/dozyio/helia/commit/6f8c15b769c08bf73e7c62dab79909b5ecfc3c93))
+
+
+### Documentation
+
+* add example adding FileList to unixfs ([#876](https://github.com/dozyio/helia/issues/876)) ([eaa042e](https://github.com/dozyio/helia/commit/eaa042eb019c4e4fcd635b0e1ee19239ef0439dd))
+* add example of adding browser file/dir to unixfs ([#817](https://github.com/dozyio/helia/issues/817)) ([1e9745c](https://github.com/dozyio/helia/commit/1e9745c0671ced6a1f9142555e5074cbd47d88b3))
+* add spell checker to ci ([#743](https://github.com/dozyio/helia/issues/743)) ([45ca6bc](https://github.com/dozyio/helia/commit/45ca6bc70b1644028500101044595fa0e2199b07))
+* fix API docs link ([#809](https://github.com/dozyio/helia/issues/809)) ([41bcc88](https://github.com/dozyio/helia/commit/41bcc88dbc6f516c4ad4ca3740b83eafdcd5e1c9))
+* fix grammar - it's -&gt; its ([#565](https://github.com/dozyio/helia/issues/565)) ([155e24d](https://github.com/dozyio/helia/commit/155e24db8c06c33972895d702a656e0c2996f3d9))
+
+
+### Dependencies
+
+* bump @helia/interface from 1.2.2 to 2.0.0 ([#87](https://github.com/dozyio/helia/issues/87)) ([098a305](https://github.com/dozyio/helia/commit/098a305241024ed3903b686892ded8abfca55f5f))
+* bump aegir from 42.2.11 to 43.0.1 ([#552](https://github.com/dozyio/helia/issues/552)) ([74ccc92](https://github.com/dozyio/helia/commit/74ccc92793a6d0bb4bee714d9fe4fa4183aa4ee8))
+* bump aegir from 43.0.3 to 44.0.1 ([#569](https://github.com/dozyio/helia/issues/569)) ([6952f05](https://github.com/dozyio/helia/commit/6952f05357844e5aa3dffb2afaf261df06b9b7c1))
+* bump aegir from 44.1.4 to 45.0.1 ([#669](https://github.com/dozyio/helia/issues/669)) ([e58e49c](https://github.com/dozyio/helia/commit/e58e49c6aed8ea9d1e9851435a25e33fdbee3781))
+* **dev:** bump aegir from 40.0.13 to 41.0.0 ([#105](https://github.com/dozyio/helia/issues/105)) ([2421ee2](https://github.com/dozyio/helia/commit/2421ee2b4440446160e1a665bc5ecfc92d2b64de))
+* update aegir to 47.x.x ([#804](https://github.com/dozyio/helia/issues/804)) ([60fbbc2](https://github.com/dozyio/helia/commit/60fbbc2eb08e023e2eac02ae0e89ed143d715084))
+* update all deps ([#792](https://github.com/dozyio/helia/issues/792)) ([d43efc7](https://github.com/dozyio/helia/commit/d43efc7bdfff34071a8e4e22e01f659fbac0b78e))
+* update it-glob ([#520](https://github.com/dozyio/helia/issues/520)) ([36081e0](https://github.com/dozyio/helia/commit/36081e063972e89c0c7b258aeb220e60bf024249))
+* update libp2p patch versions ([917a1bc](https://github.com/dozyio/helia/commit/917a1bceb9e9b56428a15dc3377a963f06affd12))
+* The following workspace dependencies were updated
+  * dependencies
+    * @helia/interface bumped from ^6.2.1 to ^7.0.0
+
 ## [7.2.1](https://github.com/ipfs/helia/compare/unixfs-v7.2.0...unixfs-v7.2.1) (2026-04-10)
 
 
